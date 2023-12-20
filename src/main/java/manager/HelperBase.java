@@ -25,17 +25,17 @@ public class HelperBase {
     }
 
     public void click(By locator){
-
         WebElement element = wd.findElement(locator);
         element.click();
     }
 
     public boolean isElementPresent(By locator){
+        // return wd.findElements(locator).size()>0;
         List<WebElement> list = wd.findElements(locator);
         return list.size()>0;
     }
     public String getMessage() {
-        //pause(4000);
+        pause(4000);
 return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
 

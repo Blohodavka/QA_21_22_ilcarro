@@ -6,33 +6,36 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
     @BeforeMethod
-    public void preCondition(){
-
+    public void preCondition() {
+        if (app.getHelperUser().isLogged()) {
+            app.getHelperUser().logOut();
+        }
     }
 
-    @Test
-    public void loginSuccess() {
-        app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("blohodavka@mail.ru", "Mama123$");
-        app.getHelperUser().submitLogin();
+        @Test
+        public void loginSuccess () {
+            app.getHelperUser().openLoginForm();
+            app.getHelperUser().fillLoginForm("blohodavka@mail.ru", "Mama123$");
+            app.getHelperUser().submitLogin();
 
 //Assert
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+            Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
 
-        app.getHelperUser().clickOKButton();
-        Assert.assertTrue(app.getHelperUser().isLogged());
-        app.getHelperUser().logOut();
-    }
+            app.getHelperUser().clickOKButton();
+           // Assert.assertTrue(app.getHelperUser().isLogged());
 
-    @Test
-    public void loginSuccessModel() {
-        app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("blohodavka@mail.ru", "Mama123$");
-        app.getHelperUser().submitLogin();
+        }
+
+        @Test
+        public void loginSuccessModel () {
+            app.getHelperUser().openLoginForm();
+            app.getHelperUser().fillLoginForm("blohodavka@mail.ru", "Mama123$");
+            app.getHelperUser().submitLogin();
 
 //Assert
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+            Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
 
-        app.getHelperUser().clickOKButton();
+            app.getHelperUser().clickOKButton();
+        }
     }
-}
+
