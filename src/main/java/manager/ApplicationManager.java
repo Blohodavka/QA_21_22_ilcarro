@@ -9,10 +9,13 @@ public class ApplicationManager {
 
     WebDriver wd;
     HelperUser helperUser;
+    HelperCar helperCar;
 
     public HelperUser getHelperUser() {
         return helperUser;
     }
+
+    public HelperCar getHelperCar(){return helperCar;}
 
     public void init() {
         wd = new ChromeDriver();

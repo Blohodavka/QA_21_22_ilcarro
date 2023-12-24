@@ -29,7 +29,7 @@ public class HelperUser extends HelperBase{
         type(By.id("password"), user.getPassword());
     }
 
-    public void submitLogin(){
+    public void submit(){
         click(By.xpath("//button[@type='submit']"));
     }
 
@@ -53,5 +53,24 @@ public class HelperUser extends HelperBase{
                 wd.findElement(By.cssSelector("div.error")).getText();
     }
 
+//*******Registration*********
 
+    public void openRegistrationForm() {
+
+        click(By.xpath("//a[text()=' Sign up ']"));
+    }
+
+    public void fillRegistrationForm(User user) {
+
+        type(By.id("name"), user.getFirstName());
+        type(By.id("lastName"), user.getLastName());
+        type(By.id("email"), user.getEmail());
+        type(By.id("password"), user.getPassword());
+    }
+
+    public void checkPolicy() {
+
+       click(By.cssSelector("label[for='terms-of-use']"));
+
+    }
 }
