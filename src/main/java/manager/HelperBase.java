@@ -23,7 +23,9 @@ public class HelperBase {
             element.sendKeys(text);
         }
     }
-
+    public void submit() {
+        click(By.xpath("//button[@type='submit']"));
+    }
     public void click(By locator){
         WebElement element = wd.findElement(locator);
         element.click();
@@ -35,7 +37,7 @@ public class HelperBase {
         return list.size()>0;
     }
     public String getMessage() {
-        pause(4000);
+       // pause(4000);
 return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
 
