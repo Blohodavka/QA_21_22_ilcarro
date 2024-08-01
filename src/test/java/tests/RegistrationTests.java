@@ -56,6 +56,7 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
 
     }
+
     @Test
     public void registrationEmptyLastName(){
         User user = new User()
@@ -70,6 +71,23 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().submit();
 
         Assert.assertEquals(app.getHelperUser().getErrorText(), "Last name is required");
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+
+    }
+    @Test
+    public void registrationEmptyEmail(){
+        User user = new User()
+                .withFirstName("Gomer")
+                .withLastName("Simpson")
+                .setEmail("")
+                .setPassword("Simson456$");
+
+        app.getHelperUser().openRegistrationForm();
+        app.getHelperUser().fillRegistrationForm(user);
+        app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
+
+        Assert.assertEquals(app.getHelperUser().getErrorText(), "Email is required");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
 
     }
@@ -111,6 +129,42 @@ public class RegistrationTests extends TestBase{
                 "Password must contain 1 uppercase letter, 1 lowercase letter, 1 number and one special symbol of [@$#^&*!]");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
     }
+@Test
+    public  void registrationEmptyPassword(){
+            User user = new User()
+                    .withFirstName("Gomer")
+                    .withLastName("Simpson")
+                    .setEmail("simp12@gmail.com")
+                    .setPassword("");
+
+            app.getHelperUser().openRegistrationForm();
+            app.getHelperUser().fillRegistrationForm(user);
+            app.getHelperUser().checkPolicyXY();
+            app.getHelperUser().submit();
+
+            Assert.assertEquals(app.getHelperUser().getErrorText(), "Password is required");
+            Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+
+
+    }
+@Test
+void registrationWithoutCheckbox(){
+            User user = new User()
+                    .withFirstName("Gomer")
+                    .withLastName("Simpson")
+                    .setEmail("simp12@gmail.com")
+                    .setPassword("Simson456$");
+
+            app.getHelperUser().openRegistrationForm();
+            app.getHelperUser().fillRegistrationForm(user);
+            app.getHelperUser().submit();
+
+            Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+
+
+    }
+
+
     @AfterMethod
     public void postConditions() {
         app.getHelperUser().clickOKButton();

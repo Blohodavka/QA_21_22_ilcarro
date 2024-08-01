@@ -19,6 +19,8 @@ public void preconditions(){
 }
     @Test
     public void addNewCarSuccessAll() {
+
+
         int i = new Random().nextInt(1000)+1000;
        Car car = Car.builder()
                .location("Tel Aviv, Israel")
