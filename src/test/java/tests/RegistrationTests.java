@@ -24,11 +24,20 @@ public class RegistrationTests extends TestBase{
         Random random = new Random();
         int i = random.nextInt(1000);
 
+        System.out.println(i);
+        System.out.println(System.currentTimeMillis());
+        int z = (int) ((System.currentTimeMillis() / 1000) % 3600);
+        System.out.println(z);
+
+
+
         User user = new User()
                 .withFirstName("Lisa")
                 .withLastName("Ivanova")
                 .setEmail("ivanova"+i+"@mail.ru")
                 .setPassword("Mama123$");
+
+        logger.info("Test start with test data --->" + user.toString());
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -47,6 +56,8 @@ public class RegistrationTests extends TestBase{
                 .setEmail("simp12@gmail.com")
                 .setPassword("Simson456$");
 
+        logger.info("Test start with test data --->" + user.toString());
+
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
@@ -64,7 +75,7 @@ public class RegistrationTests extends TestBase{
                 .withLastName("")
                 .setEmail("simp12@gmail.com")
                 .setPassword("Simson456$");
-
+        logger.info("Test start with test data --->" + user.toString());
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
@@ -82,6 +93,7 @@ public class RegistrationTests extends TestBase{
                 .setEmail("")
                 .setPassword("Simson456$");
 
+        logger.info("Test start with test data --->" + user.toString());
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
@@ -100,6 +112,8 @@ public class RegistrationTests extends TestBase{
                 .withLastName("Simpsom")
                 .setEmail("simp12gmail.com")
                 .setPassword("Simson456$");
+
+        logger.info("Test start with test data --->" + user.toString());
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -120,6 +134,8 @@ public class RegistrationTests extends TestBase{
                 .setEmail("simp12@gmail.com")
                 .setPassword("Sim4");
 
+        logger.info("Test start with test data --->" + user.toString());
+
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
@@ -136,6 +152,8 @@ public class RegistrationTests extends TestBase{
                     .withLastName("Simpson")
                     .setEmail("simp12@gmail.com")
                     .setPassword("");
+
+    logger.info("Test start with test data --->" + user.toString());
 
             app.getHelperUser().openRegistrationForm();
             app.getHelperUser().fillRegistrationForm(user);
@@ -154,6 +172,8 @@ void registrationWithoutCheckbox(){
                     .withLastName("Simpson")
                     .setEmail("simp12@gmail.com")
                     .setPassword("Simson456$");
+
+    logger.info("Test start with test data --->" + user.toString());
 
             app.getHelperUser().openRegistrationForm();
             app.getHelperUser().fillRegistrationForm(user);
